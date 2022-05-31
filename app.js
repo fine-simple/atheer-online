@@ -8,8 +8,13 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.resolve() + '/public'))
 
 app.get('/', function(req, res){
-    console.log(req.query)
-    const stemming = spawn('python3', ['-u', path.resolve() + 'deps/stem.py', req.query.q])
+    if(! req.query.q)
+    {
+        res.render('index.ejs', {stemmed: "", query: ""});
+        return;
+    }
+
+    const stemming = spawn('python3', ['-u', path.resolve() + '/deps/stem.py', req.query.q])
     stemming.stdout.on('data', (data)=>{
         res.render('index.ejs', {stemmed: data, query: req.query.q})
     });
