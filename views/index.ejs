@@ -1,17 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Arabic Stemmer</title>
-</head>
-<body>
-    <form action="/" method="get">
-        <input type="text" name="q" value="<%= query %> "id="">
-        <input type="submit" value="Search">
-    </form>
-    <p><%= stemmed %></p>
-</body>
+  </head>
+  <body>
+    <div class="wrapper">
+      <img src="/atheer.png" alt="" />
+      <div class="form_wrapper">
+        <form action="/" method="get">
+          <textarea
+            type="text"
+            name="q"
+            value="<%= query %> "
+            id="text"
+            placeholder="ضع نصـًّا للمعاينة ..."
+          ></textarea>
+          <div id="btn_wrap">
+            <input type="submit" value="Go" id="button" />
+          </div>
+        </form>
+      </div>
+      <p id="output"><%= stemmed %></p>
+    </div>
+    <!-- Auto-Resizing TextArea -->
+    <script>
+      const tx = document.getElementsByTagName('textarea');
+      for (let i = 0; i < tx.length; i++) {
+        tx[i].setAttribute(
+          'style',
+          'height:' + tx[i].scrollHeight + 'px;overflow-y:hidden;'
+        );
+        tx[i].addEventListener('input', OnInput, false);
+      }
+
+      function OnInput() {
+        this.style.height = 'auto';
+        this.style.height = this.scrollHeight + 'px';
+      }
+    </script>
+  </body>
 </html>
