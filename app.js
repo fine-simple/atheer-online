@@ -1,25 +1,47 @@
 import express from 'express';
 import path from 'path';
 import {spawn} from 'child_process';
+import livereload from 'livereload';
+import connectLiveReload from 'connect-livereload';
+
+const PORT = process.env.PORT || 3000;
 
 let app = express()
+
+const liveReloadServer = livereload.createServer();
+liveReloadServer.server.once("connection", ()=>{
+    setTimeout(()=>{
+        liveReloadServer.refresh("/");
+    }, 100);
+});
+
+app.use(connectLiveReload());
 
 app.set('view engine', 'ejs');
 app.use(express.static(path.resolve() + '/public'))
 
-app.get('/', function(req, res){
-    if(! req.query.q)
+app.get('/', function(req, res){    
+    if(!req.query.q)
     {
         res.render('index.ejs', {stemmed: "", query: ""});
         return;
     }
 
-    const stemming = spawn('python3', ['-u', path.resolve() + '/deps/stem.py', req.query.q])
+    // trim query
+    let q = req.query.q.trim();
+    
+    // stem type
+    let stemType = "stem";
+    if(req.query.type)
+        stemType= req.query.type.toLowerCase().trim();
+
+    const stemming = spawn('python3', ['-u', path.resolve() + '/deps/stem.py', q, stemType])
+    
     stemming.stdout.on('data', (data)=>{
-        res.render('index.ejs', {stemmed: data, query: req.query.q})
+        res.render('index.ejs', {stemmed: data, query: q})
     });
 });
 
-app.listen(3000);
+app.listen(PORT);
 
 export default app;

@@ -16,12 +16,13 @@
           <textarea
             type="text"
             name="q"
-            value="<%= query %> "
             id="text"
             placeholder="ضع نصـًّا للمعاينة ..."
-          ></textarea>
+          ><%= query %></textarea>
           <div id="btn_wrap">
-            <input type="submit" value="Go" id="button" />
+            <input type="submit" value="Stem" name="type" class="button" />
+            <input type="submit" value="Root" name="type" class="button" />
+            <input type="submit" value="Stem+" name="type" class="button" />
           </div>
         </form>
       </div>

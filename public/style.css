@@ -82,7 +82,7 @@ img {
   justify-content: center;
 }
 
-#button {
+.button {
   width: 30%;
   text-transform: uppercase;
   border-radius: 0.5rem;
@@ -96,7 +96,7 @@ img {
     width 0.3s ease-in-out;
 }
 
-#button:hover {
+.button:hover {
   background-color: transparent;
   color: white;
   width: 40%;
