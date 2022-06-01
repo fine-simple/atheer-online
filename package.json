@@ -5,8 +5,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -e ejs,js,css app.js",
-    "build": "PORT=80 node app.js"
+    "start": "LIVERELOAD=true nodemon -e ejs,js,css app.js",
+    "build": "nodemon -e ejs,js,css app.js"
   },
   "keywords": [],
   "author": "",

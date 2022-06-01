@@ -1,6 +1,6 @@
 import express from 'express';
 import path from 'path';
-import {spawn} from 'child_process';
+import {exec, spawn} from 'child_process';
 import livereload from 'livereload';
 import connectLiveReload from 'connect-livereload';
 
@@ -45,6 +45,11 @@ app.get('/', (req, res) => {
     stemming.stdout.on('data', (data)=>{
         res.render('index.ejs', {stemmed: data, query: q})
     });
+});
+
+app.get("/gitpull", (req, res)=>{
+    exec(`cd '${path.resolve()}' && git pull`)
+    res.redirect("/");
 });
 
 app.listen(PORT);
