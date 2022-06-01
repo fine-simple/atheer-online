@@ -8,14 +8,15 @@ const PORT = process.env.PORT || 3000;
 
 let app = express()
 
-const liveReloadServer = livereload.createServer();
-liveReloadServer.server.once("connection", ()=>{
-    setTimeout(()=>{
-        liveReloadServer.refresh("/");
-    }, 100);
-});
-
-app.use(connectLiveReload());
+if(process.env.LIVERELOAD){
+    const liveReloadServer = livereload.createServer();
+    liveReloadServer.server.once("connection", ()=>{
+        setTimeout(()=>{
+            liveReloadServer.refresh("/");
+        }, 100);
+    });
+    app.use(connectLiveReload());
+}
 
 app.set('view engine', 'ejs');
 app.use(express.static(path.resolve() + '/public'))

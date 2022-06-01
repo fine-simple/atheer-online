@@ -5,9 +5,9 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "watch": "nodemon -e ejs,js,css app.js"
+    "watch": "nodemon -e ejs,js,css app.js",
+    "build": "PORT=80 node app.js"
   },
   "keywords": [],
   "author": "",
