@@ -21,7 +21,11 @@ if(process.env.LIVERELOAD){
 app.set('view engine', 'ejs');
 app.use(express.static(path.resolve() + '/public'))
 
-app.get('/', function(req, res){    
+app.get('/public/favicon.ico', (req, res)=> {
+    res.sendFile(path.resolve() + '/public/favicon.ico');
+});
+
+app.get('/', (req, res) => {    
     if(!req.query.q)
     {
         res.render('index.ejs', {stemmed: "", query: ""});
