@@ -18,15 +18,20 @@
             name="q"
             id="text"
             placeholder="ضع نصـًّا للمعاينة ..."
-          ><%= query %></textarea>
+          >
+<%= query %></textarea
+          >
           <div id="btn_wrap">
             <input type="submit" value="Stem" name="type" class="button" />
-            <input type="submit" value="Root" name="type" class="button" />
             <input type="submit" value="Stem+" name="type" class="button" />
+            <input type="submit" value="Root" name="type" class="button" />
           </div>
         </form>
       </div>
       <p id="output"><%= stemmed %></p>
+      <a id="github" href="https://github.com/omarr45/Atheer" target="_blank"
+        >GitHub Link</a
+      >
     </div>
     <!-- Auto-Resizing TextArea -->
     <script>
