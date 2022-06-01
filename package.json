@@ -1,15 +1,15 @@
 {
-  "name": "arabicstemmerwebsite",
+  "name": "atheer",
   "version": "1.0.0",
-  "description": "",
+  "description": "Atheer is an online arabic stemmer",
   "type": "module",
   "main": "index.js",
   "scripts": {
     "start": "LIVERELOAD=true nodemon -e ejs,js,css app.js",
     "build": "nodemon -e ejs,js,css app.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["nlp", "stemmer", "arabic", "arabic stemmer"],
+  "author": "Ahmed Tawfik & Omar Abdulrahman",
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.8",
