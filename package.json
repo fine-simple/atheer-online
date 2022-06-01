@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "LIVERELOAD=true nodemon -e ejs,js,css app.js",
-    "build": "PORT=80 nodemon -e ejs,js,css app.js"
+    "build": "nodemon -e ejs,js,css app.js"
   },
   "keywords": [],
   "author": "",
