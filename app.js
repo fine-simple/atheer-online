@@ -47,7 +47,7 @@ app.get('/api', (req, res) => {
     const stemming = spawn('python3', ['-u', path.resolve() + '/deps/stem.py', q, stemType])
 
     stemming.stdout.once('data', (data)=>{
-        res.json(data);
+        res.send(data);
     });
 });
 
