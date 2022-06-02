@@ -27,9 +27,12 @@ app.get('/public/favicon.ico', (req, res)=> {
 });
 
 app.get('/', (req, res) => {    
+    res.render('index.html');
+});
+
+app.get('/api', (req, res) => {
     if(!req.query.q)
     {
-        res.render('index.html');
         return;
     }
 

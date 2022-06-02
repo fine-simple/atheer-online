@@ -4,7 +4,7 @@ $(()=>{
             q : $("#text").val(),
             type : type,
         };
-        let url = "/?" + $.param(params);
+        let url = "/api?" + $.param(params);
         $.get(url, (data)=>{
             $("#output").text(data);
         });
