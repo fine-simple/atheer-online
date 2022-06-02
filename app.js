@@ -45,9 +45,9 @@ app.get('/api', (req, res) => {
         stemType= req.query.type.toLowerCase().trim();
 
     const stemming = spawn('python3', ['-u', path.resolve() + '/deps/stem.py', q, stemType])
-    
-    stemming.stdout.on('data', (data)=>{
-        res.send(data);
+
+    stemming.stdout.once('data', (data)=>{
+        res.json(data);
     });
 });
 
