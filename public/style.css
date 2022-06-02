@@ -62,22 +62,6 @@ img {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-@media screen and (max-width: 700px) {
-  .form_wrapper {
-    background-color: rgba(255, 255, 255, 0.25);
-  }
-
-  img {
-    width: 80%;
-  }
-
-  #btn_wrap {
-    flex-direction: column;
-    width: 80%;
-    min-width: 4rem;
-  }
-}
-
 #text {
   width: 100%;
   text-align: right;
@@ -130,12 +114,31 @@ img {
 #github {
   display: block;
   position: absolute;
-  bottom: 1rem;
+  bottom: 0rem;
   left: 1rem;
   text-align: center;
   color: lightskyblue;
 }
 
-a::after {
-  content: ' ↗';
+#github img {
+  width: 6rem;
+}
+
+@media screen and (max-width: 700px) {
+  .form_wrapper {
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+
+  img {
+    width: 80%;
+  }
+
+  #btn_wrap {
+    flex-direction: column;
+    width: 80%;
+    min-width: 4rem;
+  }
+  #github img {
+    width: 3rem;
+  }
 }
