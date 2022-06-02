@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="/style.css" />
     <link rel="icon" href="/public/favicon.ico" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/ajax.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#1b1233" />
 
@@ -43,23 +45,20 @@
     <div class="wrapper">
       <img src="/atheer.png" alt="" />
       <div class="form_wrapper">
-        <form action="/" method="get">
           <textarea
             type="text"
             name="q"
             id="text"
             placeholder="ضع نصـًّا للمعاينة ..."
-          >
-<%= query %></textarea
+          ></textarea
           >
           <div id="btn_wrap">
-            <input type="submit" value="Stem" name="type" class="button" />
-            <input type="submit" value="Stem+" name="type" class="button" />
-            <input type="submit" value="Root" name="type" class="button" />
+            <button id="stem" class="button">Stem</button>
+            <button id="plus" class="button">Stem+</button>
+            <button id="root" class="button">Root</button>
           </div>
-        </form>
       </div>
-      <p id="output"><%= stemmed %></p>
+      <p id="output"></p>
       <a id="github" href="https://github.com/omarr45/Atheer" target="_blank">
         <img src="/github.png" alt="GitHub Link" title="GitHub Link ↗"
       /></a>

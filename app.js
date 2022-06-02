@@ -3,6 +3,7 @@ import path from 'path';
 import {exec, spawn} from 'child_process';
 import livereload from 'livereload';
 import connectLiveReload from 'connect-livereload';
+import { renderFile } from 'ejs';
 
 const PORT = process.env.PORT || 3000;
 
@@ -18,7 +19,7 @@ if(process.env.LIVERELOAD){
     app.use(connectLiveReload());
 }
 
-app.set('view engine', 'ejs');
+app.engine('html', renderFile);
 app.use(express.static(path.resolve() + '/public'))
 
 app.get('/public/favicon.ico', (req, res)=> {
@@ -28,7 +29,7 @@ app.get('/public/favicon.ico', (req, res)=> {
 app.get('/', (req, res) => {    
     if(!req.query.q)
     {
-        res.render('index.ejs', {stemmed: "", query: ""});
+        res.render('index.html');
         return;
     }
 
@@ -43,7 +44,7 @@ app.get('/', (req, res) => {
     const stemming = spawn('python3', ['-u', path.resolve() + '/deps/stem.py', q, stemType])
     
     stemming.stdout.on('data', (data)=>{
-        res.render('index.ejs', {stemmed: data, query: q})
+        res.send(data);
     });
 });
 
